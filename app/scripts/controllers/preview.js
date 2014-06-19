@@ -5,6 +5,6 @@ angular.module('demoChronoApp')
 
   		$scope.colors = Colors;
   		$scope.client = Client;
-  		$scope.categories = Services.all;
+  		$scope.services = Services;
 
   });

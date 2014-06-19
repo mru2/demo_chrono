@@ -11,7 +11,7 @@
   </head>
   <body ng-app="demoChronoApp" class="menu-open">
 
-    <div class="container">
+    <!--<div class="container">-->
 
       <div id="menu" class="open">
         <div id="menu-toggle">
@@ -22,12 +22,13 @@
         <div ng-include src="'menu.html'"></div>
       </div>
 
-
-      <div id="preview" ng-controller="PreviewCtrl" ng-style="{backgroundColor: colors.bodyBg, colors: colors.bodyText}">
-        <div class="preview-contents" ng-include src="'preview.html'"></div>
+      <div ng-controller="PreviewCtrl">
+        <div id="preview" ng-style="{backgroundColor: colors.bodyBg, color: colors.bodyText}">
+          <div class="preview-contents" ng-include src="'preview.html'"></div>
+        </div>
       </div>
 
-    </div>
+    <!--</div>-->
 
     <script src="components/jquery/dist/jquery.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.js"></script>
