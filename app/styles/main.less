@@ -1,33 +1,33 @@
-@import "compass_twitter_bootstrap";
+@import "../components/bootstrap/less/bootstrap";
 
-$menuWidth: 240px;
-$menuBackground: #31373D;
-$menuBorder: solid 1px #272C30;
-$menuColor: #89A3B6;
+@menuWidth: 300px;
+@menuBackground: #31373D;
+@menuBorder: solid 1px #272C30;
+@menuColor: #89A3B6;
 
 body {
 	left: 0;
 	position: relative;
-    transition: left 0.3s ease;
+    .transition(left 0.3s ease);
 	overflow-x: hidden;
 }
 
 body.menu-open {
-	left: $menuWidth;
+	left: @menuWidth;
 	
 }
 
 #menu {
-	width: $menuWidth;
+	width: @menuWidth;
 	height: 100%;
 	position: fixed;
 	top: 0;
 	z-index: 100;
-	left: -$menuWidth;
-    transition: all 0.3s ease;
-    background: $menuBackground;
-    border-right: $menuBorder;
-    color: $menuColor;
+	left: -@menuWidth;
+    .transition(all 0.3s ease);
+    background: @menuBackground;
+    border-right: @menuBorder;
+    color: @menuColor;
 	&.open {
 		left: 0;
 		.close-toggle{
@@ -50,11 +50,9 @@ body.menu-open {
 	position: absolute;
 	top: 0;
 	right: -21px;
-	background: $menuBackground;
-    border-right: $menuBorder;
-    border-bottom: $menuBorder;
+	background: @menuBackground;
+    border-right: @menuBorder;
+    border-bottom: @menuBorder;
     padding: 5px;
     text-align: center;
 }
-
-

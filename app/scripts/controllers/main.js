@@ -2,11 +2,6 @@
 
 angular.module('demoChronoApp')
   .controller('MainCtrl', function ($scope, Colors, Calendars) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
 
     $scope.colors = Colors;
     $scope.calendars = Calendars;
