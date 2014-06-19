@@ -8,11 +8,17 @@ angular.module('demoChronoApp')
     // - set(values) // Set a calendar array
 
     var Calendars = {
-      all: ['PATOULACCI Marcel', 'DEBICHER Robert'],
+      all: ['Votre nom ici'],
 
-      set: function(calendars){
-        this.all = calendars;
-        console.log('changed calendars, now are', this.all); 
+      push: function(name){
+        this.all.push(name); 
+      },
+
+      remove: function(name){
+        var index = this.all.indexOf(name);
+        if (index > -1) {
+            this.all.splice(index, 1);
+        }
       }
     };
 

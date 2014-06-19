@@ -5,6 +5,20 @@ angular.module('demoChronoApp')
 
     $scope.client = Client;
 
+    $scope.calendars = Calendars;
+    $scope.newCalendar = '';
+
+    $scope.removeCalendar = function(calendar){
+      Calendars.remove(calendar);
+    }
+
+    $scope.addCalendar = function(){
+      if ($scope.newCalendar == '') { return; }
+      Calendars.push($scope.newCalendar);
+      $scope.newCalendar = '';
+    }
+
+
     $scope.themes = ColorsStore;
     $scope.currentTheme = null;
 

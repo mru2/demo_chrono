@@ -8,6 +8,7 @@ angular.module('demoChronoApp')
           [
             {
               "name": "Beauté des Mains",
+              "image": "beaute-mains.png",
               "services": [
                 {
                   "name": "Pose vernis express",
@@ -38,6 +39,7 @@ angular.module('demoChronoApp')
             },
             {
               "name": "Beauté des Pieds",
+              "image": "beaute-pieds.png",
               "services": [
                 {
                   "name": "Pose vernis express",
@@ -68,6 +70,7 @@ angular.module('demoChronoApp')
             },
             {
               "name": "Nail Art",
+              "image": "nail-art.png",
               "services": [
                 {
                   "name": "Bicolore",

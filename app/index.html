@@ -14,16 +14,16 @@
     <!--<div class="container">-->
 
       <div id="menu" class="open">
-        <div id="menu-toggle">
-            <i class="fa fa-chevron-right open-toggle toggle"></i>
-            <i class="fa fa-chevron-left close-toggle toggle"></i>
-        </div>
-
         <div ng-include src="'menu.html'"></div>
       </div>
 
       <div ng-controller="PreviewCtrl">
         <div id="preview" ng-style="{backgroundColor: colors.bodyBg, color: colors.bodyText}">
+
+          <div id="menu-toggle">
+            <i class="fa fa-chevron-right open-toggle toggle"></i>
+          </div>
+
           <div class="preview-contents" ng-include src="'preview.html'"></div>
         </div>
       </div>
