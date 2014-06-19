@@ -1,0 +1,47 @@
+<div id="preview-logo">
+</div>
+<div id="preview-main">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#services-list" data-toggle="tab" ng-style="{backgroundColor: colors.moduleBg}">RDV proposés</a></li>
+					<li><a href="#services-rdv" data-toggle="tab" ng-style="{backgroundColor: colors.moduleBg}">Prendre RDV</a></li>
+					<li><a href="#login" data-toggle="tab" ng-style="{backgroundColor: colors.moduleBg}">Connextion</a></li>
+				</ul>
+
+				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg}">
+					<div class="tab-pane active" id="services-list">
+						<h2>Prendre rendez-vous chez {{client.name}} pour</h2>
+
+						<div class="row thumbnails-row">
+							<div ng-repeat="category in categories" class="col-md-3">
+								<div class="thumbnail">
+									<a>
+										<img src="https://clicrdv-production-groups.s3-eu-west-1.amazonaws.com/generic/thumbnails/80x80/beauty/2_EPILATION-pidjr6eq.png" class="img-	responsive img-rounded">
+									</a>
+										<div class="caption">
+											<a ng-style="{color: colors.moduleLink}">
+												<b>{{category.name}}</b>
+											</a>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
+						<p>
+							Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
+						</p>
+						<p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
+					</div>
+					<div class="tab-pane" id="services-rdv">2</div>
+					<div class="tab-pane" id="login">3</div>
+				<div>
+
+			</div>
+		</div>
+	</div>
+</div>
