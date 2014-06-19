@@ -1,9 +1,18 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<div id="menu">
+	<div id="menu-toggle">
+		<span class="open-toggle toggle"><i class="fa fa-angle-right"></i></span>
+		<span class="close-toggle toggle"><i class="fa fa-angle-left"></i></span>
+	</div>
+	<h1>This is the menu</h1>			
 </div>
+
+<div id="preview">
+<h1>This is the preview</h1>
+</div>
+<script type="text/javascript">
+	var menu = $('#menu'), body = $('body');
+	$('#menu-toggle').on('click', function(){
+    	menu.toggleClass('open');
+    	body.toggleClass('menu-open');
+    });
+</script>

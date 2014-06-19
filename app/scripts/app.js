@@ -10,4 +10,4 @@ angular.module('demoChronoApp', ['ngRoute'])
       .otherwise({
         redirectTo: '/'
       });
-  });
+  });  

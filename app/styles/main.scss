@@ -1,1 +1,60 @@
 @import "compass_twitter_bootstrap";
+
+$menuWidth: 240px;
+$menuBackground: #31373D;
+$menuBorder: solid 1px #272C30;
+$menuColor: #89A3B6;
+
+body {
+	left: 0;
+	position: relative;
+    transition: left 0.3s ease;
+	overflow-x: hidden;
+}
+
+body.menu-open {
+	left: $menuWidth;
+	
+}
+
+#menu {
+	width: $menuWidth;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	left: -$menuWidth;
+    transition: all 0.3s ease;
+    background: $menuBackground;
+    border-right: $menuBorder;
+    color: $menuColor;
+	&.open {
+		left: 0;
+		.close-toggle{
+    		display: block;
+    	}
+    	.open-toggle {
+    		display: none;
+    	}
+	}
+	.close-toggle{
+    	display: none;
+    }
+    .open-toggle {
+    	display: block;
+    }
+}
+
+#menu-toggle {
+	width: 10px;
+	position: absolute;
+	top: 0;
+	right: -21px;
+	background: $menuBackground;
+    border-right: $menuBorder;
+    border-bottom: $menuBorder;
+    padding: 5px;
+    text-align: center;
+}
+
+
