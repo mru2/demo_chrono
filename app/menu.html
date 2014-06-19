@@ -1,12 +1,22 @@
 <div ng-controller="MenuCtrl" class="menu-contents">
 
-  <h1>Theme</h1>
-  
   <label for="client-name">Société</label>
   <input type="text" id="client-name" ng-model="client.name"></input>
   
   <label for="client-name">Calendriers</label>
-  <p>TODO...</p>
+
+  <div class="calendars">
+    <div ng-repeat="calendar in calendars.all">
+      <input type="text" ng-value="calendar"></input>
+      <a ng-click="removeCalendar(calendar)" class="remove">×</a>
+      <div class="clear"></div>
+    </div>
+
+    <input type="text" ng-model="newCalendar"></input>
+    <a ng-click="addCalendar()" class="add">+</a>
+    <div class="clear"></div>
+  </div>
+
 
   <label>Couleurs</label>
   <div ng-repeat="theme in themes" class="theme-radio" ng-click="selectTheme(theme)">
