@@ -31,7 +31,7 @@ body.menu-open {
 	&.open {
 		left: 0;
 		.close-toggle{
-    		display: block;
+    		display: inline-block;
     	}
     	.open-toggle {
     		display: none;
@@ -41,18 +41,17 @@ body.menu-open {
     	display: none;
     }
     .open-toggle {
-    	display: block;
+    	display: inline-block;
     }
 }
 
 #menu-toggle {
-	width: 10px;
 	position: absolute;
 	top: 0;
-	right: -21px;
+	right: -35px;
 	background: @menuBackground;
     border-right: @menuBorder;
     border-bottom: @menuBorder;
-    padding: 5px;
+    padding: 5px 12px;
     text-align: center;
 }
