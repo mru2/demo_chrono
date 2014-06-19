@@ -10,6 +10,8 @@ angular.module('demoChronoApp')
     //   - price
     //   - (image)
 
+    var _activeCategory = null;
+
     var Services = {
 
       all: [
@@ -22,10 +24,26 @@ angular.module('demoChronoApp')
 
       set: function(categories){
         this.all = categories;
+        _activeCategory = null;
       },
 
       isFlat: function(){
-        return this.all.length == 0;
+        return this.all.length == 1;
+      },
+
+      setActiveCategory: function(categoryName) {
+        var self = this;
+        _activeCategory = this.all.filter(function(category){
+          return category.name === categoryName;
+        });
+      },
+
+      activeCategory: function(){
+        if (this.isFlat()) {
+          return this.all[0];
+        }
+
+        return _activeCategory;
       }
 
     };
