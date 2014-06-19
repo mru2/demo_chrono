@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('demoChronoApp', [])
+angular.module('demoChronoApp', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
