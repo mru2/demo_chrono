@@ -38,12 +38,22 @@
 						</div>
 
 						<div ng-if="services.activeCategory()">
-							<a ng-click="services.setActiveCategory()" ng-hide="services.isFlat()">Retour aux categories</a>
-							<ul class="services-list">
-								<li ng-repeat="service in services.activeCategory().services" class="service">
-									<b>{{service.name}}</b> {{service.price}}
-								</li>
-							</ul>
+							<div class="row">
+								<div class="col-md-2">
+									<ul class="categories-nav" ng-style="{borderColor: colors.tabsBg}">
+										<li ng-style="{borderColor: colors.tabsBg}"><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}"  ng-hide="services.isFlat()">Retour aux categories</a></li>
+										<li ng-repeat="category in services.all" ng-style="{borderColor: colors.tabsBg}"><a ng-click="services.setActiveCategory(category.name)" ng-style="{color: colors.moduleLink}">{{category.name}}</a></li>
+									</ul>
+								</div>
+								<div class="col-md-10"
+									<ul class="services-list">
+										<li ng-repeat="service in services.activeCategory().services" class="service">
+											<a class="btn btn-small pull-right btn-success">Prendre RDV</a>
+											<b>{{service.name}}</b> <span>{{service.duration}} min</span>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 
 						<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
