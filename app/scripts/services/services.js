@@ -36,6 +36,11 @@ angular.module('demoChronoApp')
         _activeCategory = this.all.filter(function(category){
           return category.name === categoryName;
         });
+        if (_activeCategory.length) {
+          _activeCategory = _activeCategory[0]
+        } else {
+          _activeCategory = null;
+        }
       },
 
       activeCategory: function(){

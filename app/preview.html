@@ -21,8 +21,8 @@
 					<div class="tab-pane active" id="services-list">
 						<h2>Prendre rendez-vous chez {{client.name}} pour</h2>
 
-						<div class="row thumbnails-row">
-							<div ng-repeat="category in services.all" class="col-md-3">
+						<div class="row thumbnails-row" ng-if="!services.activeCategory()">
+							<div ng-repeat="category in services.all" class="col-md-3" ng-click="services.setActiveCategory(category.name)">
 								<div class="thumbnail">
 									<a>
 										<img src="https://clicrdv-production-groups.s3-eu-west-1.amazonaws.com/generic/thumbnails/80x80/beauty/2_EPILATION-pidjr6eq.png" class="img-	responsive img-rounded">
@@ -35,6 +35,15 @@
 									</a>
 								</div>
 							</div>
+						</div>
+
+						<div ng-if="services.activeCategory()">
+							<a ng-click="services.setActiveCategory()">Retour aux categories</a>
+							<ul class="services-list">
+								<li ng-repeat="service in services.activeCategory().services" class="service">
+									<b>{{service.name}}</b> {{service.price}}
+								</li>
+							</ul>
 						</div>
 
 						<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
