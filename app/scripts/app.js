@@ -7,6 +7,10 @@ angular.module('demoChronoApp', ['ngRoute'])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/test', {
+        templateUrl: 'views/main_test.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
