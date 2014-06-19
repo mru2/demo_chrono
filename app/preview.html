@@ -5,13 +5,19 @@
 		<div class="row">
 			<div class="col-md-12">
 
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#services-list" data-toggle="tab" ng-style="{backgroundColor: colors.moduleBg}">RDV proposés</a></li>
-					<li><a href="#services-rdv" data-toggle="tab" ng-style="{backgroundColor: colors.moduleBg}">Prendre RDV</a></li>
-					<li><a href="#login" data-toggle="tab" ng-style="{backgroundColor: colors.moduleBg}">Connextion</a></li>
+				<ul class="nav nav-tabs" tab-nav>
+					<li class="active ">
+						<a href="#services-list" ng-style="{backgroundColor: (activeTab === 0 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 0 ? colors.tabsText : colors.moduleLink)}">RDV proposés</a>
+					</li>
+					<li>
+						<a href="#services-rdv" ng-style="{backgroundColor: (activeTab === 1 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 1 ? colors.tabsText : colors.moduleLink)}">Prendre RDV</a>
+					</li>
+					<li>
+						<a href="#login" ng-style="{backgroundColor: (activeTab === 2 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 2 ? colors.tabsText : colors.moduleLink)}">Connextion</a>
+					</li>
 				</ul>
 
-				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg}">
+				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg, color: colors.moduleText}">
 					<div class="tab-pane active" id="services-list">
 						<h2>Prendre rendez-vous chez {{client.name}} pour</h2>
 
@@ -39,6 +45,7 @@
 					</div>
 					<div class="tab-pane" id="services-rdv">2</div>
 					<div class="tab-pane" id="login">3</div>
+
 				<div>
 
 			</div>

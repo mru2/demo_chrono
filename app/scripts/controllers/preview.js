@@ -7,4 +7,9 @@ angular.module('demoChronoApp')
   		$scope.client = Client;
   		$scope.services = Services;
 
+  		$scope.activeCategory = null;
+  		$scope.setCategory = function(category){
+  			$scope.activeCategory = category;
+  		};
+
   });
