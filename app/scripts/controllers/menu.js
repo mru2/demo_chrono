@@ -13,6 +13,7 @@ angular.module('demoChronoApp')
     }
 
     $scope.addCalendar = function(){
+      if ($scope.newCalendar == '') { return; }
       Calendars.push($scope.newCalendar);
       $scope.newCalendar = '';
     }
