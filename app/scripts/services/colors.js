@@ -38,7 +38,13 @@ angular.module('demoChronoApp')
       console.log('setting color template', template);
 
       // TODO : handle missing values by defaulting to given ones
+      this.bodyBg = template.bodyBg;
+      this.bodyText = template.bodyText;
       this.moduleBg = template.moduleBg;
+      this.moduleText = template.moduleText;
+      this.moduleLink = template.moduleLink;
+      this.tabsBg = template.tabsBg;
+      this.tabsText = template.tabsText;
     }
 
 
