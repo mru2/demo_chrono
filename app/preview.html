@@ -7,17 +7,17 @@
 
 				<ul class="nav nav-tabs" tab-nav>
 					<li class="active ">
-						<a href="#services-list" ng-style="{backgroundColor: (activeTab === 0 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 0 ? colors.tabsText : colors.moduleLink)}">RDV proposés</a>
+						<a href="#services-list" ng-style="{backgroundColor: (activeTab === 0 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 0 ? colors.tabsText : colors.moduleLink)}" ng-click="activeTab = 0">RDV proposés</a>
 					</li>
 					<li>
-						<a href="#services-rdv" ng-style="{backgroundColor: (activeTab === 1 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 1 ? colors.tabsText : colors.moduleLink)}">Prendre RDV</a>
+						<a href="#services-rdv" ng-style="{backgroundColor: (activeTab === 1 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 1 ? colors.tabsText : colors.moduleLink)}" ng-click="activeTab = 1">Prendre RDV</a>
 					</li>
 					<li>
-						<a href="#login" ng-style="{backgroundColor: (activeTab === 2 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 2 ? colors.tabsText : colors.moduleLink)}">Connexion</a>
+						<a href="#login" ng-style="{backgroundColor: (activeTab === 2 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 2 ? colors.tabsText : colors.moduleLink)}" ng-click="activeTab = 2">Connexion</a>
 					</li>
 				</ul>
 
-				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg, color: colors.moduleText}">
+				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg, color: colors.moduleText}" ng-show="activeTab === 0">
 					<div class="tab-pane active" id="services-list">
 						<h2>Prendre rendez-vous chez {{client.name}} pour</h2>
 
@@ -40,15 +40,15 @@
 						<div ng-if="services.activeCategory()">
 							<div class="row">
 								<div class="col-md-2">
-									<ul class="categories-nav" ng-style="{borderColor: colors.tabsBg}">
-										<li ng-style="{borderColor: colors.tabsBg}"><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}"  ng-hide="services.isFlat()">Retour aux categories</a></li>
-										<li ng-repeat="category in services.all" ng-style="{borderColor: colors.tabsBg}"><a ng-click="services.setActiveCategory(category.name)" ng-style="{color: colors.moduleLink}">{{category.name}}</a></li>
+									<ul class="categories-nav">
+										<li><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}"  ng-hide="services.isFlat()">Retour aux categories</a></li>
+										<li ng-repeat="category in services.all"><a ng-click="services.setActiveCategory(category.name)" ng-style="(services.activeCategory().name === category.name) ? {color: colors.moduleText, textDecoration: 'none', fontWeight: 'bold'} : {color: colors.moduleLink}">{{category.name}}</a></li>
 									</ul>
 								</div>
 								<div class="col-md-10"
 									<ul class="services-list">
 										<li ng-repeat="service in services.activeCategory().services" class="service">
-											<a class="btn btn-small pull-right btn-success">Prendre RDV</a>
+											<a class="btn btn-small pull-right btn-success" ng-click="setActiveService(service.name)">Prendre RDV</a>
 											<b>{{service.name}}</b> <span>{{service.duration}} min</span>
 										</li>
 									</ul>
@@ -62,14 +62,44 @@
 						</p>
 						<p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
 					</div>
-					<div class="tab-pane" id="services-rdv">2</div>
+
+
+					<div class="tab-pane" id="services-rdv" ng-show="activeTab === 1">
+						<h2>Prendre rendez-vous chez {{client.name}}</h2>
+
+						<p>Pour 
+							<select>
+								<option ng-repeat="service in services.activeCategory().services">
+									{{service.name}} - {{service.duration}} min
+								</option>
+							</select>
+						</p>
+
+
+						<p>Avec 
+							<select>
+								<option ng-repeat="calendar in calendars.all">
+									{{calendar}}
+								</option>
+							</select>
+						</p>
+
+
+						<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
+						<p>
+							Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
+						</p>
+						<p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
+
+
+					</div>
 					
 
-					<div class="tab-pane" id="login">
+					<div class="tab-pane" id="login" ng-show="activeTab === 2">
 
 						<div class="row">
 
-							<div class="col-md-6 signup">
+							<div class="col-md-6">
 								<div class="content">
 							    <div class="col-sm-offset-4 col-sm-8">
 										<h2>Nouveau sur ClicRDV?</h2>
@@ -100,7 +130,7 @@
 
 							</div>
 
-							<div class="col-md-6">
+							<div class="col-md-6 login">
 								<div class="content">
 							    <div class="col-sm-offset-4 col-sm-8">
 										<h2>J'ai un accès ClicRDV</h2>
@@ -151,4 +181,26 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div id="preview-footer">
+	<p id="legal_footer">
+
+        <a id="footer_logo" href="http://www.clicrdv.com/" target="_blank">
+          <img alt="Service proposé par ClicRDV" class="pnghack" src="images/clicrdv_logo.png?1380011832" title="Service proposé par ClicRDV" width="107">
+
+            <img alt="Pages Jaunes Groupe" class="pnghack" src="images/solocal_logo.png?1380011832" title="Pages Jaunes Groupe">
+        </a>
+      &nbsp;-&nbsp;
+      <a href="http://www.clicrdv.com/fr/agenda-en-ligne" target="_blank" ng-style="{color: colors.tabsBg}">Agenda en Ligne</a>
+      &nbsp;-&nbsp;
+      <a href="http://www.clicrdv.com/fr/conditions-generales-dutilisation" target="_blank" ng-style="{color: colors.tabsBg}">Conditions d'utilisation</a>
+      &nbsp;-&nbsp;
+
+      <a href="http://www.clicrdv.com/fr/charte-groupe" target="_blank" ng-style="{color: colors.tabsBg}">Charte du groupe</a>
+      &nbsp;-&nbsp;
+
+      <span ng-style="{color: colors.tabsBg}">© 2006-2014 ClicRDV</span>
+
+
+  </p>
 </div>
