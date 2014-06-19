@@ -50,8 +50,8 @@ angular.module('demoChronoApp')
         }
       ],
 
-      set: function(){
-        this.all = set;
+      set: function(categories){
+        this.all = categories;
       },
 
       isFlat: function(){

@@ -1,4 +1,97 @@
+@menuWidth: 300px;
+@menuBackground: #ecf0f1;
+@menuBorderColor: darken(@menuBackground, 10);
+@menuBorder: solid 1px @menuBorderColor;
+@menuColor: #333;
+
+
+#menu {
+  width: @menuWidth;
+  height: 100%;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  left: -@menuWidth;
+    .transition(all 0.3s ease);
+    background: @menuBackground;
+    border-right: @menuBorder;
+    color: @menuColor;
+  &.open {
+    left: 0;
+    .close-toggle{
+        display: block;
+      }
+      .open-toggle {
+        display: none;
+      }
+  }
+  .close-toggle{
+      display: none;
+    }
+    .open-toggle {
+      display: block;
+    }
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+}
+
+#menu-toggle {
+  width: 10px;
+  position: absolute;
+  top: 0;
+  right: -21px;
+  background: @menuBackground;
+    border-right: @menuBorder;
+    border-bottom: @menuBorder;
+    padding: 5px;
+    text-align: center;
+}
+
 .menu-contents{
-  
+
+  h1{
+    font-size: 36px;
+    font-family: 'GillSansStd-Light', Helvetica, sans-serif;
+    font-weight: 300;
+    color: #2985bb;
+  }
+ 
+  label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #696968;
+  }
+
+  input[type="text"]{
+    display: block;
+    width: 100%;
+    border: none;
+    border: 1px solid @menuBorderColor;
+    padding: 10px;
+  }
+
+  .theme-radio{
+    margin-bottom: 20px;
+  }
+
+  .theme{
+    display: inline-block;
+    vertical-align: middle;
+    width: 212px;
+    height: 50px;
+    border: 1px solid @menuBorderColor;
+
+    .bar{
+      display: block;
+      width: 70px;
+      float: left;
+      height: 48px;
+    }
+  }
 
 }

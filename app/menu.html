@@ -1,5 +1,27 @@
-<div ng-controller="MenuCtrl">
-          <h1>Coucou</h1>
-          <input type="text" ng-model="client.name" class="form-control">
+<div ng-controller="MenuCtrl" class="menu-contents">
 
+  <h1>Theme</h1>
+  
+  <label for="client-name">Société</label>
+  <input type="text" id="client-name" ng-model="client.name"></input>
+  
+  <label for="client-name">Calendriers</label>
+  <p>TODO...</p>
+
+  <label>Couleurs</label>
+  <div ng-repeat="theme in themes" class="theme-radio" ng-click="selectTheme(theme)">
+    <input type="radio" ng-value="theme.name" ng-model="currentTheme"></input>
+    <div class="theme">
+      <span class="bar" ng-style="{backgroundColor: theme.values.tabsBg}"></span>
+      <span class="bar" ng-style="{backgroundColor: theme.values.bodyBg}"></span>
+      <span class="bar" ng-style="{backgroundColor: theme.values.moduleBg}"></span>
+    </div>
+  </div>
+
+
+  <label>Prestations</label>
+  <div ng-repeat="business in businesses" class="theme-radio" ng-click="selectBusiness(business)">
+    <input type="radio" ng-value="business.name" ng-model="currentBusiness"></input>
+    {{business.name}}
+  </div>
 </div>
