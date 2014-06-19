@@ -10,7 +10,23 @@
   </head>
   <body ng-app="demoChronoApp" class="menu-open">
 
-    <div class="container" ng-view></div>
+    <div class="container">
+
+      <div id="menu" class="open">
+        <div id="menu-toggle">
+            <span class="open-toggle toggle"><i class="fa fa-angle-right"></i></span>
+            <span class="close-toggle toggle"><i class="fa fa-angle-left"></i></span>
+        </div>
+
+        <div class="menu-contents" ng-include src="'menu.html'"></div>
+      </div>
+
+
+      <div id="preview">
+        <h1>This is the preview</h1>
+      </div>
+
+    </div>
 
     <script src="components/jquery/dist/jquery.js"></script>
     <script src="components/bootstrap/dist/js/bootstrap.js"></script>
@@ -19,10 +35,19 @@
 
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
     <script src="scripts/services/colors.js"></script>
     <script src="scripts/services/calendars.js"></script>
     <script src="scripts/services/services.js"></script>
     <script src="scripts/services/client.js"></script>
+
+    <script type="text/javascript">
+        var menu = $('#menu'), body = $('body');
+        $('#menu-toggle').on('click', function(){
+            menu.toggleClass('open');
+            body.toggleClass('menu-open');
+        });
+    </script>
 
   </body>
 </html>
