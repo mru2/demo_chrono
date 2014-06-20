@@ -39,13 +39,13 @@
 
 						<div ng-if="services.activeCategory()">
 							<div class="row">
-								<div class="col-md-2">
+								<div class="col-md-2" ng-hide="services.isFlat()">
 									<ul class="categories-nav">
-										<li><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}"  ng-hide="services.isFlat()">Retour aux categories</a></li>
+										<li><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}" >Retour aux categories</a></li>
 										<li ng-repeat="category in services.all"><a ng-click="services.setActiveCategory(category.name)" ng-style="(services.activeCategory().name === category.name) ? {color: colors.moduleText, textDecoration: 'none', fontWeight: 'bold'} : {color: colors.moduleLink}">{{category.name}}</a></li>
 									</ul>
 								</div>
-								<div class="col-md-10"
+								<div ng-class="services.isFlat() ? 'col-md-12' : 'col-md-10'">
 									<ul class="services-list">
 										<li ng-repeat="service in services.activeCategory().services" class="service">
 											<a class="btn btn-small pull-right btn-success" ng-click="showTab(1); setActiveService(service.name);">Prendre RDV</a>
@@ -68,13 +68,13 @@
 						<h2>Prendre rendez-vous chez {{client.name}}</h2>
 
 						<p>Pour 
-							<select ng-model="activeService" ng-options="service.name as (service.name + ' - ' + service.duration + ' min') for service in services.activeCategory().services">
+							<select class="form-control" style="width: auto;" ng-model="activeService" ng-options="service.name as (service.name + ' - ' + service.duration + ' min') for service in services.activeCategory().services">
 							</select>
 						</p>
 
 
 						<p>Avec 
-							<select>
+							<select class="form-control" style="width: auto;">
 								<option ng-repeat="calendar in calendars.all">
 									{{calendar.name}}
 								</option>
