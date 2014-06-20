@@ -19,6 +19,7 @@ angular.module('demoChronoApp')
       $scope.activeService = null;
       $scope.setActiveService = function(serviceName){
         $scope.activeService = serviceName;
+        $scope.activeTab = 1;
         console.log('active service is now', $scope.activeService);
       };
 

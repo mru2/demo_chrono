@@ -17,8 +17,8 @@
 					</li>
 				</ul>
 
-				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg, color: colors.moduleText}" ng-show="activeTab === 0">
-					<div class="tab-pane active" id="services-list">
+				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg, color: colors.moduleText}">
+					<div class="tab-pane active" id="services-list" ng-show="activeTab === 0">
 						<h2>Prendre rendez-vous chez {{client.name}} pour</h2>
 
 						<div class="row thumbnails-row" ng-if="!services.activeCategory()">
