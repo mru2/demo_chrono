@@ -18,7 +18,65 @@
 
 
       <div id="menu" class="open">
-        <div ng-include src="'menu.html'"></div>
+
+
+        <div ng-controller="MenuCtrl" class="menu-contents">
+
+          <label for="client-name">Société</label>
+          <input type="text" id="client-name" ng-model="client.name" autofocus="true"></input>
+          
+          <label>Domain d'exercice</label>
+          <select class="form-control" ng-model="services.all" ng-options="business.categories as business.name for business in businesses"></select>
+
+          <label for="client-name">Calendriers</label>
+
+          <div class="calendars">
+            <div ng-repeat="calendar in calendars.all">
+              <input type="text" ng-model="calendar.name"></input>
+              <a ng-click="removeCalendar(calendar)" class="remove">×</a>
+              <div class="clear"></div>
+            </div>
+
+            <input type="text" ng-model="newCalendar"></input>
+            <a ng-click="addCalendar()" class="add">+</a>
+            <div class="clear"></div>
+          </div>
+
+
+          <div class="logoSelect">
+            <label>Logo</label>
+            <input type="file" file-select>
+          </div>
+
+          <label>
+            Couleurs
+            <span class="btn btn-xs pull-right btn-default" style="text-transform:initial" ng-show="client.logo" ng-click="generateColors()">Auto</span>
+            <span class="btn btn-xs pull-right" ng-click="themeIsCustom = !themeIsCustom" ng-class="{'btn-success': themeIsCustom, 'btn-default': !themeIsCustom}" style="text-transform:initial">Perso</span>
+          </label>
+          <div ng-show="!themeIsCustom">
+            <div ng-repeat="theme in themes" class="theme-radio" ng-click="selectTheme(theme)">
+              <input type="radio" ng-value="theme.name" ng-model="currentTheme"></input>
+              <div class="theme">
+                <span class="bar" ng-style="{backgroundColor: theme.values.tabsBg}"></span>
+                <span class="bar" ng-style="{backgroundColor: theme.values.bodyBg}"></span>
+                <span class="bar" ng-style="{backgroundColor: theme.values.moduleBg}"></span>
+              </div>
+            </div>
+          </div>
+          <div ng-show="themeIsCustom">
+            <input type="text" colorpicker colorpicker-position="bottom" colorpicker-fixed-position="true" ng-model="colors.bodyBg" placeholder="Couleur de fond">
+            <input type="text" colorpicker colorpicker-position="bottom" colorpicker-fixed-position="true" ng-model="colors.bodyText">
+            <input type="text" colorpicker colorpicker-position="bottom" colorpicker-fixed-position="true" ng-model="colors.tabsBg">
+            <input type="text" colorpicker colorpicker-position="top" colorpicker-fixed-position="true" ng-model="colors.tabsText">
+            <input type="text" colorpicker colorpicker-position="top" colorpicker-fixed-position="true" ng-model="colors.moduleBg">
+            <input type="text" colorpicker colorpicker-position="top" colorpicker-fixed-position="true" ng-model="colors.moduleLink">
+            <input type="text" colorpicker colorpicker-position="top" colorpicker-fixed-position="true" ng-model="colors.moduleText">
+            <a ng-click="log(colors)" href="#">Exporter</a>
+          </div>
+
+        </div>
+
+
       </div>
 
       <div ng-controller="PreviewCtrl">
@@ -28,7 +86,248 @@
             <i class="fa fa-chevron-right open-toggle toggle"></i>
           </div>
 
-          <div class="preview-contents" ng-include src="'preview.html'"></div>
+          <div class="preview-contents">
+
+            <div id="preview-logo">
+              <img ng-src="{{client.logo}}">
+            </div>
+            <div id="preview-main">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+
+                    <ul class="nav nav-tabs" tab-nav>
+                      <li class="active ">
+                        <a href="#services-list" ng-style="{backgroundColor: (activeTab === 0 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 0 ? colors.tabsText : colors.moduleLink)}" ng-click="activeTab = 0">RDV proposés</a>
+                      </li>
+                      <li>
+                        <a href="#services-rdv" ng-style="{backgroundColor: (activeTab === 1 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 1 ? colors.tabsText : colors.moduleLink)}" ng-click="activeTab = 1">Prendre RDV</a>
+                      </li>
+                      <li>
+                        <a href="#login" ng-style="{backgroundColor: (activeTab === 2 ? colors.tabsBg : colors.moduleBg), color: (activeTab === 2 ? colors.tabsText : colors.moduleLink)}" ng-click="activeTab = 2">Connexion</a>
+                      </li>
+                    </ul>
+
+                    <div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg, color: colors.moduleText}">
+
+                      <div ng-if="services.all.length > 0">
+                        <div class="tab-pane active" id="services-list">
+                          <h2>Prendre rendez-vous chez <b>{{client.name}}</b> pour</h2>
+
+                          <div class="row thumbnails-row" ng-if="!services.activeCategory()">
+                            <div ng-repeat="category in services.all" class="col-md-3" ng-click="services.setActiveCategory(category.name)">
+                              <div class="thumbnail">
+                                <a>
+                                  <img src="images/{{category.image}}" ng-show="category.image" class="img- responsive img-rounded">
+                                </a>
+                                  <div class="caption">
+                                    <a ng-style="{color: colors.moduleLink}">
+                                      <b>{{category.name}}</b>
+                                    </a>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div ng-if="services.activeCategory()">
+                            <div class="row">
+                              <div class="col-md-2" ng-hide="services.isFlat()">
+                                <ul class="categories-nav">
+                                  <li><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}" >Retour aux categories</a></li>
+                                  <li ng-repeat="category in services.all"><a ng-click="services.setActiveCategory(category.name)" ng-style="(services.activeCategory().name === category.name) ? {color: colors.moduleText, textDecoration: 'none', fontWeight: 'bold'} : {color: colors.moduleLink}">{{category.name}}</a></li>
+                                </ul>
+                              </div>
+                              <div ng-class="services.isFlat() ? 'col-md-12' : 'col-md-10'">
+                                <ul class="services-list">
+                                  <li ng-repeat="service in services.activeCategory().services" class="service">
+                                    <a class="btn btn-small pull-right" ng-click="showTab(1); setActiveService(service.name);" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Prendre RDV</a>
+                                    <b>{{service.name}}</b> <span>{{service.duration}} min</span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
+                          <p>
+                            Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
+                          </p>
+                          <p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
+                        </div>
+
+
+                        <div class="tab-pane" id="services-rdv">
+                          <h2>Prendre rendez-vous chez {{client.name}}</h2>
+
+                          <p>Pour 
+                            <select class="form-control" style="width: auto;" ng-model="activeService" ng-options="service.name as (service.name + ' - ' + service.duration + ' min') for service in services.activeCategory().services">
+                            </select>
+                          </p>
+
+
+                          <p>Avec 
+                            <select class="form-control" style="width: auto;" ng-options="calendar.name for calendar in calendars.all" ng-model="selectedCalendar">
+                            </select>
+                          </p>
+
+                          <div ng-show="!!activeService && !!selectedCalendar">
+                            <div class="user">
+
+                               <div>
+                                  <a class="btn btn-default pull-left"><i class="fa fa-angle-left"></i> Précédents</a>
+                                  <a class="btn btn-default pull-right"><i class="fa fa-angle-right"></i> Suivants</a>
+                               </div>
+
+                               <div class="clear"></div>
+                               <div>
+                                  <div class="day" ng-repeat="day in days">
+                                     <div class="head">
+                                        <p><strong>{{day.weekDay}}</strong></p>
+                                        <p>{{day.date|date:'dd/MM/yyyy'}}</p>
+                                     </div>
+
+                                     <div class="body">
+                                        <a ng-repeat="hour in day.hours">{{hour}}</a>
+                                     </div>
+                                  </div>
+                               </div>
+                               <div class="clear"></div>
+
+                            </div>
+
+                          </div>
+
+
+                          <p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
+                          <p>
+                            Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
+                          </p>
+                          <p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
+
+
+                        </div>
+                        
+
+                        <div class="tab-pane" id="login">
+
+                          <div class="row">
+
+                            <div class="col-md-6">
+                              <div class="content">
+                                <div class="col-sm-offset-4 col-sm-8">
+                                  <h2>Nouveau sur ClicRDV?</h2>
+                                </div>
+                                <form class="form-horizontal" role="form">
+
+                                  <div class="form-group">
+                                    <label class="col-sm-4 control-label">Email</label>
+                                    <div class="col-sm-8">
+                                      <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                      <small>Aucun email non sollicité ne sera envoyé</small>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                      <button type="submit" class="btn" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Connexion</button>
+                                    </div>
+                                  </div>
+
+                                </form>
+                              </div>
+
+                            </div>
+
+                            <div class="col-md-6 login">
+                              <div class="content">
+                                <div class="col-sm-offset-4 col-sm-8">
+                                  <h2>J'ai un accès ClicRDV</h2>
+                                </div>
+                                <form class="form-horizontal" role="form">
+
+                                  <div class="form-group">
+                                    <label class="col-sm-4 control-label">Email</label>
+                                    <div class="col-sm-8">
+                                      <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label class="col-sm-4 control-label">Mot de passe</label>
+                                    <div class="col-sm-8">
+                                      <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                      <div class="checkbox">
+                                        <label>
+                                          <input type="checkbox"> Se souvenir de moi
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-8">
+                                      <button type="submit" class="btn" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Connexion</button>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </form>
+                
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <div ng-show="services.all.length == 0">
+                        <h2>Veuillez sélectionner un domaine d'exercice dans le menu</h2>
+                      </div>
+
+                    <div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="preview-footer">
+              <p id="legal_footer">
+
+                    <a id="footer_logo" href="http://www.clicrdv.com/" target="_blank">
+                      <img alt="Service proposé par ClicRDV" class="pnghack" src="images/clicrdv_logo.png?1380011832" title="Service proposé par ClicRDV" width="107">
+
+                        <img alt="Pages Jaunes Groupe" class="pnghack" src="images/solocal_logo.png?1380011832" title="Pages Jaunes Groupe">
+                    </a>
+                  &nbsp;-&nbsp;
+                  <a href="http://www.clicrdv.com/fr/agenda-en-ligne" target="_blank" ng-style="{color: colors.bodyText}">Agenda en Ligne</a>
+                  &nbsp;-&nbsp;
+                  <a href="http://www.clicrdv.com/fr/conditions-generales-dutilisation" target="_blank" ng-style="{color: colors.bodyText}">Conditions d'utilisation</a>
+                  &nbsp;-&nbsp;
+
+                  <a href="http://www.clicrdv.com/fr/charte-groupe" target="_blank" ng-style="{color: colors.bodyText}">Charte du groupe</a>
+                  &nbsp;-&nbsp;
+
+                  <span ng-style="{color: colors.bodyText}">© 2006-2014 ClicRDV</span>
+
+
+              </p>
+            </div>
+
+
+
+          </div>
         </div>
       </div>
 
