@@ -2,13 +2,98 @@ angular.module('demoChronoApp')
   .service('ServicesStore', function(){
     return [
 
+
+      {
+        name: 'Salon de beauté',
+        categories: 
+          [
+            {
+              "name": "Epilation Caresse",
+              "image": "epilation_caresse.png",
+              "services": [
+                {
+                  "name": "Epilation 1/2 jambe",
+                  "duration": 30,
+                  "price": 29
+                },
+                {
+                  "name": "Epilation jambe entières",
+                  "duration": 45,
+                  "price": 49
+                },
+                {
+                  "name": "Epilation sourcils",
+                  "duration": 20,
+                  "price": 19
+                },
+                {
+                  "name": "Epilation maillot",
+                  "duration": 30,
+                  "price": 40
+                }
+              ]
+            },
+            {
+              "name": "Soins Visages",
+              "image": "soins_visages.png",
+              "services": [
+                {
+                  "name": "Soin Détente",
+                  "duration": 30,
+                  "price": 30
+                },
+                {
+                  "name": "Soin Rajeunissement",
+                  "duration": 45,
+                  "price": 45
+                },
+                {
+                  "name": "Soin Energisant",
+                  "duration": 30,
+                  "price": 30
+                },
+                {
+                  "name": "Soin Purifiant",
+                  "duration": 45,
+                  "price": 45
+                }
+              ]
+            },
+            {
+              "name": "Soins Corps",
+              "image": "soins_corps.png",
+              "services": [
+                {
+                  "name": "Jambes Légères",
+                  "duration": 30,
+                  "price": 30
+                },
+                {
+                  "name": "Modelage",
+                  "duration": 45,
+                  "price": 45
+                },
+                {
+                  "name": "Gommage",
+                  "duration": 30,
+                  "price": 30
+                },
+                {
+                  "name": "Massage",
+                  "duration": 45,
+                  "price": 45
+                }
+              ]
+            }
+          ]        
+      },
       {
         name: 'Onglerie',
         categories:
           [
             {
               "name": "Beauté des Mains",
-              "image": "beaute-mains.png",
+              "image": "beaute_des_mains.png",
               "services": [
                 {
                   "name": "Pose vernis express",
@@ -39,7 +124,7 @@ angular.module('demoChronoApp')
             },
             {
               "name": "Beauté des Pieds",
-              "image": "beaute-pieds.png",
+              "image": "beaute_des_pieds.png",
               "services": [
                 {
                   "name": "Pose vernis express",
@@ -70,7 +155,7 @@ angular.module('demoChronoApp')
             },
             {
               "name": "Nail Art",
-              "image": "nail-art.png",
+              "image": "nail_art.png",
               "services": [
                 {
                   "name": "Bicolore",
@@ -98,6 +183,7 @@ angular.module('demoChronoApp')
           [
            {
             "name" : "Massage solo",
+            "image": "massage_solo.png",
             "services" : [
             {
              "name": "Massage Thaïlandais",
@@ -123,6 +209,7 @@ angular.module('demoChronoApp')
            },
            {
             "name" : "Massage duo",
+            "image": "massage_duo.png",
             "services" : [
             {
              "name": "Massage Thaïlandais duo",
@@ -148,6 +235,7 @@ angular.module('demoChronoApp')
            },
            {
             "name" : "Hammam",
+            "image": "hammam.png",
             "services" : [
             {
              "name": "Gommage",
@@ -191,89 +279,8 @@ angular.module('demoChronoApp')
               }
           ] }
         ]       
-      },
-
-      {
-        name: 'Salon de beauté',
-        categories: 
-          [
-            {
-              "name": "Epilation Caresse",
-              "services": [
-                {
-                  "name": "Epilation 1/2 jambe",
-                  "duration": 30,
-                  "price": 29
-                },
-                {
-                  "name": "Epilation jambe entières",
-                  "duration": 45,
-                  "price": 49
-                },
-                {
-                  "name": "Epilation sourcils",
-                  "duration": 20,
-                  "price": 19
-                },
-                {
-                  "name": "Epilation maillot",
-                  "duration": 30,
-                  "price": 40
-                }
-              ]
-            },
-            {
-              "name": "Soins Visages",
-              "services": [
-                {
-                  "name": "Soin Détente",
-                  "duration": 30,
-                  "price": 30
-                },
-                {
-                  "name": "Soin Rajeunissement",
-                  "duration": 45,
-                  "price": 45
-                },
-                {
-                  "name": "Soin Energisant",
-                  "duration": 30,
-                  "price": 30
-                },
-                {
-                  "name": "Soin Purifiant",
-                  "duration": 45,
-                  "price": 45
-                }
-              ]
-            },
-            {
-              "name": "Soins Corps",
-              "services": [
-                {
-                  "name": "Jambes Légères",
-                  "duration": 30,
-                  "price": 30
-                },
-                {
-                  "name": "Modelage",
-                  "duration": 45,
-                  "price": 45
-                },
-                {
-                  "name": "Gommage",
-                  "duration": 30,
-                  "price": 30
-                },
-                {
-                  "name": "Massage",
-                  "duration": 45,
-                  "price": 45
-                }
-              ]
-            }
-          ]        
       }
+
 
     ];
   });

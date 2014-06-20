@@ -43,4 +43,10 @@ angular.module('demoChronoApp')
     	console.log(data)
     };
 
+    $scope.setClientLogo = function(file){
+    	$scope.$apply(function(){
+    		$scope.client.logo = file;
+    	});
+    };
+
   });
