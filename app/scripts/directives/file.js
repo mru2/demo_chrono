@@ -6,7 +6,7 @@ angular.module('demoChronoApp').directive('fileSelect', function(){
         		if (input.files && input.files.length) {
         			var reader = new FileReader();
         			reader.onload = function(e) {
-        				scope.setClientLogo(e.target.result);
+        				scope.setClientLogo(e.target.result, angular.element('#preview-logo img'));
         			};
         			reader.readAsDataURL(input.files[0])
         		} else {
