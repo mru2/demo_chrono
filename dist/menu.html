@@ -1,7 +1,7 @@
 <div ng-controller="MenuCtrl" class="menu-contents">
 
   <label for="client-name">Société</label>
-  <input type="text" id="client-name" ng-model="client.name">
+  <input type="text" id="client-name" ng-model="client.name" autofocus="true">
   
   <label>Domain d'exercice</label>
   <select class="form-control" ng-model="services.all" ng-options="business.categories as business.name for business in businesses"></select>
@@ -20,6 +20,11 @@
     <div class="clear"></div>
   </div>
 
+
+  <div class="logoSelect">
+  	<label>Logo</label>
+  	<input type="file" file-select="">
+  </div>
 
   <label>
   	Couleurs
