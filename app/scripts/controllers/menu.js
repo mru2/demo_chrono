@@ -4,6 +4,7 @@ angular.module('demoChronoApp')
   .controller('MenuCtrl', function ($scope, Client, Colors, Calendars, Services, ColorsStore, ServicesStore) {
 
     $scope.client = Client;
+    $scope.services = Services;
 
     $scope.calendars = Calendars;
     $scope.newCalendar = '';

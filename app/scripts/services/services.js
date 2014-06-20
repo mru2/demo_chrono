@@ -14,13 +14,7 @@ angular.module('demoChronoApp')
 
     var Services = {
 
-      all: [
-        {
-          name: 'Choisissez une catégorie dans le menu.',
-          services: [
-          ]
-        }
-      ],
+      all: [],
 
       set: function(categories){
         this.all = categories;
