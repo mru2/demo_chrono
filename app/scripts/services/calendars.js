@@ -8,7 +8,7 @@ angular.module('demoChronoApp')
     // - set(values) // Set a calendar array
 
     var Calendars = {
-      all: [{name: 'Votre nom ici'}],
+      all: [{name: 'Nom du professionnel'}],
 
       push: function(name){
         this.all.push({name: name}); 
