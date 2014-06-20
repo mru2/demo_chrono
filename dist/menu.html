@@ -28,6 +28,7 @@
 
   <label>
   	Couleurs
+  	<span class="btn btn-xs pull-right btn-default" style="text-transform:initial" ng-show="client.logo" ng-click="generateColors()">Auto</span>
   	<span class="btn btn-xs pull-right" ng-click="themeIsCustom = !themeIsCustom" ng-class="{'btn-success': themeIsCustom, 'btn-default': !themeIsCustom}" style="text-transform:initial">Perso</span>
   </label>
   <div ng-show="!themeIsCustom">
