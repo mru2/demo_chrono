@@ -18,159 +18,167 @@
 				</ul>
 
 				<div class="tab-content" ng-style="{backgroundColor: colors.moduleBg, borderTopColor: colors.tabsBg, color: colors.moduleText}">
-					<div class="tab-pane active" id="services-list">
-						<h2>Prendre rendez-vous chez {{client.name}} pour</h2>
 
-						<div class="row thumbnails-row" ng-if="!services.activeCategory()">
-							<div ng-repeat="category in services.all" class="col-md-3" ng-click="services.setActiveCategory(category.name)">
-								<div class="thumbnail">
-									<a>
-										<img src="https://clicrdv-production-groups.s3-eu-west-1.amazonaws.com/generic/thumbnails/80x80/beauty/2_EPILATION-pidjr6eq.png" class="img-	responsive img-rounded">
-									</a>
-										<div class="caption">
-											<a ng-style="{color: colors.moduleLink}">
-												<b>{{category.name}}</b>
-											</a>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
+					<div ng-if="services.all.length > 0">
+						<div class="tab-pane active" id="services-list">
+							<h2>Prendre rendez-vous chez {{client.name}} pour</h2>
 
-						<div ng-if="services.activeCategory()">
-							<div class="row">
-								<div class="col-md-2" ng-hide="services.isFlat()">
-									<ul class="categories-nav">
-										<li><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}" >Retour aux categories</a></li>
-										<li ng-repeat="category in services.all"><a ng-click="services.setActiveCategory(category.name)" ng-style="(services.activeCategory().name === category.name) ? {color: colors.moduleText, textDecoration: 'none', fontWeight: 'bold'} : {color: colors.moduleLink}">{{category.name}}</a></li>
-									</ul>
-								</div>
-								<div ng-class="services.isFlat() ? 'col-md-12' : 'col-md-10'">
-									<ul class="services-list">
-										<li ng-repeat="service in services.activeCategory().services" class="service">
-											<a class="btn btn-small pull-right btn-success" ng-click="showTab(1); setActiveService(service.name);">Prendre RDV</a>
-											<b>{{service.name}}</b> <span>{{service.duration}} min</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
-						<p>
-							Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
-						</p>
-						<p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
-					</div>
-
-
-					<div class="tab-pane" id="services-rdv">
-						<h2>Prendre rendez-vous chez {{client.name}}</h2>
-
-						<p>Pour 
-							<select class="form-control" style="width: auto;" ng-model="activeService" ng-options="service.name as (service.name + ' - ' + service.duration + ' min') for service in services.activeCategory().services">
-							</select>
-						</p>
-
-
-						<p>Avec 
-							<select class="form-control" style="width: auto;">
-								<option ng-repeat="calendar in calendars.all">
-									{{calendar.name}}
-								</option>
-							</select>
-						</p>
-
-
-						<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
-						<p>
-							Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
-						</p>
-						<p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
-
-
-					</div>
-					
-
-					<div class="tab-pane" id="login">
-
-						<div class="row">
-
-							<div class="col-md-6">
-								<div class="content">
-							    <div class="col-sm-offset-4 col-sm-8">
-										<h2>Nouveau sur ClicRDV?</h2>
+							<div class="row thumbnails-row" ng-if="!services.activeCategory()">
+								<div ng-repeat="category in services.all" class="col-md-3" ng-click="services.setActiveCategory(category.name)">
+									<div class="thumbnail">
+										<a>
+											<img src="https://clicrdv-production-groups.s3-eu-west-1.amazonaws.com/generic/thumbnails/80x80/beauty/2_EPILATION-pidjr6eq.png" class="img-	responsive img-rounded">
+										</a>
+											<div class="caption">
+												<a ng-style="{color: colors.moduleLink}">
+													<b>{{category.name}}</b>
+												</a>
+											</div>
+										</a>
 									</div>
-									<form class="form-horizontal" role="form">
+								</div>
+							</div>
 
-										<div class="form-group">
-									    <label class="col-sm-4 control-label">Email</label>
-									    <div class="col-sm-8">
-									      <input type="email" class="form-control" placeholder="Email">
-									    </div>
-									  </div>
+							<div ng-if="services.activeCategory()">
+								<div class="row">
+									<div class="col-md-2" ng-hide="services.isFlat()">
+										<ul class="categories-nav">
+											<li><a ng-click="services.setActiveCategory()"  ng-style="{color: colors.moduleLink}" >Retour aux categories</a></li>
+											<li ng-repeat="category in services.all"><a ng-click="services.setActiveCategory(category.name)" ng-style="(services.activeCategory().name === category.name) ? {color: colors.moduleText, textDecoration: 'none', fontWeight: 'bold'} : {color: colors.moduleLink}">{{category.name}}</a></li>
+										</ul>
+									</div>
+									<div ng-class="services.isFlat() ? 'col-md-12' : 'col-md-10'">
+										<ul class="services-list">
+											<li ng-repeat="service in services.activeCategory().services" class="service">
+												<a class="btn btn-small pull-right btn-success" ng-click="showTab(1); setActiveService(service.name);">Prendre RDV</a>
+												<b>{{service.name}}</b> <span>{{service.duration}} min</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
 
-									  <div class="form-group">
-									    <div class="col-sm-offset-4 col-sm-8">
-									      <small>Aucun email non sollicité ne sera envoyé</small>
-									    </div>
-									  </div>
+							<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
+							<p>
+								Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
+							</p>
+							<p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
+						</div>
 
-									  <div class="form-group">
-									    <div class="col-sm-offset-4 col-sm-8">
-									      <button type="submit" class="btn" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Connexion</button>
-									    </div>
-									  </div>
+
+						<div class="tab-pane" id="services-rdv">
+							<h2>Prendre rendez-vous chez {{client.name}}</h2>
+
+							<p>Pour 
+								<select class="form-control" style="width: auto;" ng-model="activeService" ng-options="service.name as (service.name + ' - ' + service.duration + ' min') for service in services.activeCategory().services">
+								</select>
+							</p>
+
+
+							<p>Avec 
+								<select class="form-control" style="width: auto;">
+									<option ng-repeat="calendar in calendars.all">
+										{{calendar.name}}
+									</option>
+								</select>
+							</p>
+
+
+							<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
+							<p>
+								Les différentes techniques utilisées pour les soins du corps uniquement font appel à des manœuvres que votre état de santé peut contre-indiquer. Dans ces situations la pratique du soin nécessite que vous remettiez à votre esthéticienne un certificat médical. C'est le cas pour les affections suivantes : Troubles circulatoires majeurs (phlébites, varices, ulcères variqueux...), Traitement anticoagulant, Cancers en cours d'évolution, Maladie du sang, Maladie inflammatoire en poussée (infection, fièvre), Grossesse/Accouchement récent/Allaitement, Affections ostéo-articulaires, Troubles thyroïdiens, Affections cardiaques récentes (infarctus, angine de poitrine, hypertension artérielle...).
+							</p>
+							<p>Pour toutes questions, vous pouvez contacter votre esthéticienne.</p>
+
+
+						</div>
+						
+
+						<div class="tab-pane" id="login">
+
+							<div class="row">
+
+								<div class="col-md-6">
+									<div class="content">
+								    <div class="col-sm-offset-4 col-sm-8">
+											<h2>Nouveau sur ClicRDV?</h2>
+										</div>
+										<form class="form-horizontal" role="form">
+
+											<div class="form-group">
+										    <label class="col-sm-4 control-label">Email</label>
+										    <div class="col-sm-8">
+										      <input type="email" class="form-control" placeholder="Email">
+										    </div>
+										  </div>
+
+										  <div class="form-group">
+										    <div class="col-sm-offset-4 col-sm-8">
+										      <small>Aucun email non sollicité ne sera envoyé</small>
+										    </div>
+										  </div>
+
+										  <div class="form-group">
+										    <div class="col-sm-offset-4 col-sm-8">
+										      <button type="submit" class="btn" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Connexion</button>
+										    </div>
+										  </div>
+
+										</form>
+									</div>
+
+								</div>
+
+								<div class="col-md-6 login">
+									<div class="content">
+								    <div class="col-sm-offset-4 col-sm-8">
+											<h2>J'ai un accès ClicRDV</h2>
+										</div>
+										<form class="form-horizontal" role="form">
+
+											<div class="form-group">
+										    <label class="col-sm-4 control-label">Email</label>
+										    <div class="col-sm-8">
+										      <input type="email" class="form-control" placeholder="Email">
+										    </div>
+										  </div>
+
+											<div class="form-group">
+										    <label class="col-sm-4 control-label">Mot de passe</label>
+										    <div class="col-sm-8">
+										      <input type="password" class="form-control" placeholder="Password">
+										    </div>
+										  </div>
+
+											<div class="form-group">
+										    <div class="col-sm-offset-4 col-sm-8">
+										      <div class="checkbox">
+										        <label>
+										          <input type="checkbox"> Se souvenir de moi
+										        </label>
+										      </div>
+										    </div>
+										  </div>
+
+										  <div class="form-group">
+										    <div class="col-sm-offset-4 col-sm-8">
+										      <button type="submit" class="btn" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Connexion</button>
+										    </div>
+										  </div>
+										</div>
 
 									</form>
+		
 								</div>
 
 							</div>
 
-							<div class="col-md-6 login">
-								<div class="content">
-							    <div class="col-sm-offset-4 col-sm-8">
-										<h2>J'ai un accès ClicRDV</h2>
-									</div>
-									<form class="form-horizontal" role="form">
-
-										<div class="form-group">
-									    <label class="col-sm-4 control-label">Email</label>
-									    <div class="col-sm-8">
-									      <input type="email" class="form-control" placeholder="Email">
-									    </div>
-									  </div>
-
-										<div class="form-group">
-									    <label class="col-sm-4 control-label">Mot de passe</label>
-									    <div class="col-sm-8">
-									      <input type="password" class="form-control" placeholder="Password">
-									    </div>
-									  </div>
-
-										<div class="form-group">
-									    <div class="col-sm-offset-4 col-sm-8">
-									      <div class="checkbox">
-									        <label>
-									          <input type="checkbox"> Se souvenir de moi
-									        </label>
-									      </div>
-									    </div>
-									  </div>
-
-									  <div class="form-group">
-									    <div class="col-sm-offset-4 col-sm-8">
-									      <button type="submit" class="btn" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Connexion</button>
-									    </div>
-									  </div>
-									</div>
-
-								</form>
-	
-							</div>
-
 						</div>
 
+					</div>
+
+					<div ng-show="services.all.length == 0">
+						<h2>Veuillez sélectionner un domaine d'exercice dans le menu</h2>
 					</div>
 
 				<div>
