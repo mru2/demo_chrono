@@ -3,6 +3,9 @@
   <label for="client-name">Société</label>
   <input type="text" id="client-name" ng-model="client.name"></input>
   
+  <label>Domain d'exercice</label>
+  <select ng-model="services.all" ng-options="business.categories as business.name for business in businesses"></select>
+
   <label for="client-name">Calendriers</label>
 
   <div class="calendars">
@@ -28,10 +31,4 @@
     </div>
   </div>
 
-
-  <label>Prestations</label>
-  <div ng-repeat="business in businesses" class="theme-radio" ng-click="selectBusiness(business)">
-    <input type="radio" ng-value="business.name" ng-model="currentBusiness"></input>
-    {{business.name}}
-  </div>
 </div>

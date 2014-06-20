@@ -68,10 +68,7 @@
 						<h2>Prendre rendez-vous chez {{client.name}}</h2>
 
 						<p>Pour 
-							<select>
-								<option ng-repeat="service in services.activeCategory().services">
-									{{service.name}} - {{service.duration}} min
-								</option>
+							<select ng-model="activeService" ng-options="service.name as (service.name + ' - ' + service.duration + ' min') for service in services.activeCategory().services">
 							</select>
 						</p>
 
