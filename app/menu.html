@@ -18,15 +18,30 @@
   </div>
 
 
-  <label>Couleurs</label>
-  <div ng-repeat="theme in themes" class="theme-radio" ng-click="selectTheme(theme)">
-    <input type="radio" ng-value="theme.name" ng-model="currentTheme"></input>
-    <div class="theme">
-      <span class="bar" ng-style="{backgroundColor: theme.values.tabsBg}"></span>
-      <span class="bar" ng-style="{backgroundColor: theme.values.bodyBg}"></span>
-      <span class="bar" ng-style="{backgroundColor: theme.values.moduleBg}"></span>
-    </div>
+  <label>
+  	Couleurs
+  	<span class="btn btn-xs pull-right" ng-click="themeIsCustom = !themeIsCustom" ng-class="{'btn-success': themeIsCustom, 'btn-default': !themeIsCustom}" style="text-transform:initial">Perso</span>
+  </label>
+  <div ng-show="!themeIsCustom">
+  	<div ng-repeat="theme in themes" class="theme-radio" ng-click="selectTheme(theme)">
+  	  <input type="radio" ng-value="theme.name" ng-model="currentTheme"></input>
+  	  <div class="theme">
+  	    <span class="bar" ng-style="{backgroundColor: theme.values.tabsBg}"></span>
+  	    <span class="bar" ng-style="{backgroundColor: theme.values.bodyBg}"></span>
+  	    <span class="bar" ng-style="{backgroundColor: theme.values.moduleBg}"></span>
+  	  </div>
+  	</div>
   </div>
+  <div ng-show="themeIsCustom">
+  	<input type="text" colorpicker ng-model="colors.bodyBg" placeholder="Couleur de fond">
+  	<input type="text" colorpicker ng-model="colors.bodyText">
+  	<input type="text" colorpicker ng-model="colors.tabsBg">
+  	<input type="text" colorpicker ng-model="colors.tabsText">
+  	<input type="text" colorpicker ng-model="colors.moduleBg">
+  	<input type="text" colorpicker ng-model="colors.moduleLink">
+  	<input type="text" colorpicker ng-model="colors.moduleText">
+  </div>
+
 
 
   <label>Prestations</label>

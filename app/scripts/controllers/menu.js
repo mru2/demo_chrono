@@ -20,7 +20,9 @@ angular.module('demoChronoApp')
 
 
     $scope.themes = ColorsStore;
+    $scope.themeIsCustom = false;
     $scope.currentTheme = null;
+    $scope.colors = Colors;
 
     $scope.selectTheme = function(theme){
       console.log('selecting theme', theme);

@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('demoChronoApp', []);  
+angular.module('demoChronoApp', ['colorpicker.module']);  
