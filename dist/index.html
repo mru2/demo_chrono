@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ClicRdv DemoChrono</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" id="webfonts-css" href="http://fonts.googleapis.com/css?family=Noto+Sans%3A700&amp;ver=3.6" type="text/css" media="all">
+    <link rel="stylesheet" href="/components/angular-bootstrap-colorpicker/css/colorpicker.css">
+  </head>
+  <body ng-app="demoChronoApp" class="menu-open">
+
+
+      <div id="menu" class="open">
+        <div ng-include="" src="'menu.html'"></div>
+      </div>
+
+      <div ng-controller="PreviewCtrl">
+        <div id="preview" ng-style="{backgroundColor: colors.bodyBg, color: colors.bodyText}">
+
+          <div id="menu-toggle">
+            <i class="fa fa-chevron-right open-toggle toggle"></i>
+          </div>
+
+          <div class="preview-contents" ng-include="" src="'preview.html'"></div>
+        </div>
+      </div>
+
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="components/jquery/dist/jquery.js"></script>
+    <script src="components/lodash/dist/lodash.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-route/angular-route.js"></script>
+    <script src="components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/controllers/preview.js"></script>
+    <script src="scripts/services/colors.js"></script>
+    <script src="scripts/services/calendars.js"></script>
+    <script src="scripts/services/services.js"></script>
+    <script src="scripts/services/client.js"></script>
+    <script src="scripts/services/colors_store.js"></script>
+    <script src="scripts/services/services_store.js"></script>
+    <script src="scripts/directives/tabs.js"></script>
+    <!-- endbuild -->
+
+    <script type="text/javascript">
+        $(function(){
+          var menu = $('#menu'), body = $('body');
+          $('#menu-toggle').on('click', function(){
+            menu.toggleClass('open');
+            body.toggleClass('menu-open');
+          });
+        });
+    </script>
+
+  </body>
+</html>
