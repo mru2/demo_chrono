@@ -51,7 +51,7 @@
 									<div ng-class="services.isFlat() ? 'col-md-12' : 'col-md-10'">
 										<ul class="services-list">
 											<li ng-repeat="service in services.activeCategory().services" class="service">
-												<a class="btn btn-small pull-right btn-success" ng-click="showTab(1); setActiveService(service.name);">Prendre RDV</a>
+												<a class="btn btn-small pull-right" ng-click="showTab(1); setActiveService(service.name);" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Prendre RDV</a>
 												<b>{{service.name}}</b> <span>{{service.duration}} min</span>
 											</li>
 										</ul>
