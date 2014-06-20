@@ -16,19 +16,6 @@ angular.module('demoChronoApp')
       },
 
       {
-        name: 'Noir/Rose',
-        values: {
-          bodyBg:     "#140F11",
-          bodyText:   "#FFFFFF",
-          moduleBg:   "#080302",
-          moduleText: "#ED028C",
-          moduleLink: "#ED028C",
-          tabsBg:     "#ED028C",
-          tabsText:   "#080302"
-        }
-      },
-
-      {
         name: 'Zen/Vert',
         values: {
           bodyBg:     "#D3C398",
@@ -55,16 +42,61 @@ angular.module('demoChronoApp')
       },
 
       {
-        name: 'Taupe/Rose',
+        name: "Nouveau1",
         values: {
-          bodyBg:     "#857C6B",
-          bodyText:   "#FFFFFFF",
-          moduleBg:   "#F9F0F1",
-          moduleText: "#EA3C70",
-          moduleLink: "#EA3C70",
-          tabsBg:     "#EA3D70",
-          tabsText:   "#FFFFFFF"
+          bodyBg: "#FFFFFF", bodyText: "#4C4C4C", moduleBg: "#DFEEFF", moduleText: "#333333", moduleLink: "#1122CC",
+          tabsText: '#FFFFFF',
+          tabsBg: '#92C5FF'
+        }
+      },
+
+      {
+        name: "Nouveau2",
+        values: {
+          bodyBg: "#ffffff", bodyText: "#96c461", moduleBg: "#e4e4e4", moduleText: "#333333", moduleLink: "#cc1111",        
+          tabsText: '#FFFFFF',
+          tabsBg: '#7F0505'
+        }
+      },
+
+      {
+        name: "Nouveau3",
+        values: {
+          bodyBg: "#140f11",
+
+          bodyText: "#ed80b9",
+
+          moduleBg: "#faeded",
+
+          moduleLink: "#e2007a",
+
+          moduleText: "#e2007a",
+
+          tabsText: '#FFFFFF',
+
+          tabsBg: '#950051'
+        }
+      },
+
+      {
+        name: "Nouveau4",
+        values: {
+          bodyBg: "#57B7B3", bodyText: "#16476C", moduleBg: "#E5F8FA", moduleText: "#16476C", moduleLink: "#000000",
+          tabsText: '#FFFFFF',
+          tabsBg: '#286A68'
+        }
+      },
+
+      {
+        name: "Nouveau5",
+        values: {
+          bodyBg: "#ECECEC", bodyText: "#333333", moduleBg: "#ffffff", moduleText: "#000000", moduleLink: "#000000",
+          tabsText: '#FFFFFF',
+          tabsBg: '#333333'
+
         }
       }
+
+
     ];
   });
