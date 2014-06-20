@@ -39,4 +39,8 @@ angular.module('demoChronoApp')
       Services.set(business.categories);
     }
 
+    $scope.log = function(data){
+    	console.log(data)
+    };
+
   });
