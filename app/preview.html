@@ -28,7 +28,7 @@
 								<div ng-repeat="category in services.all" class="col-md-3" ng-click="services.setActiveCategory(category.name)">
 									<div class="thumbnail">
 										<a>
-											<img src="https://clicrdv-production-groups.s3-eu-west-1.amazonaws.com/generic/thumbnails/80x80/beauty/2_EPILATION-pidjr6eq.png" class="img-	responsive img-rounded">
+											<img src="/images/{{category.image}}" ng-show="category.image" class="img-	responsive img-rounded">
 										</a>
 											<div class="caption">
 												<a ng-style="{color: colors.moduleLink}">
