@@ -28,7 +28,7 @@
 								<div ng-repeat="category in services.all" class="col-md-3" ng-click="services.setActiveCategory(category.name)">
 									<div class="thumbnail">
 										<a>
-											<img src="/images/{{category.image}}" ng-show="category.image" class="img- responsive img-rounded">
+											<img src="images/{{category.image}}" ng-show="category.image" class="img- responsive img-rounded">
 										</a>
 											<div class="caption">
 												<a ng-style="{color: colors.moduleLink}">
@@ -51,7 +51,7 @@
 									<div ng-class="services.isFlat() ? 'col-md-12' : 'col-md-10'">
 										<ul class="services-list">
 											<li ng-repeat="service in services.activeCategory().services" class="service">
-												<a class="btn btn-small pull-right btn-success" ng-click="showTab(1); setActiveService(service.name);">Prendre RDV</a>
+												<a class="btn btn-small pull-right" ng-click="showTab(1); setActiveService(service.name);" ng-style="{backgroundColor: colors.tabsBg, color: colors.tabsText}">Prendre RDV</a>
 												<b>{{service.name}}</b> <span>{{service.duration}} min</span>
 											</li>
 										</ul>
@@ -77,12 +77,11 @@
 
 
 							<p>Avec 
-								<select class="form-control" style="width: auto">
-									<option ng-repeat="calendar in calendars.all">
-										{{calendar.name}}
-									</option>
+								<select class="form-control" style="width: auto" ng-options="calendar.name for calendar in calendars.all" ng-model="selectedCalendar">
 								</select>
 							</p>
+
+							<div ng-include="" src="'user.html'" ng-show="!!activeService && !!selectedCalendar"></div>
 
 
 							<p>{{client.name}} et votre conseillère esthéticienne sont entièrement dévoués à votre bien-être et votre beauté.</p>
