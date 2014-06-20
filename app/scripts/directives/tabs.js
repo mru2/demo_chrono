@@ -8,11 +8,17 @@ angular.module('demoChronoApp').directive('tabNav', function(){
 			links.click(function(e){
 				e.preventDefault();
 				var link = $(e.target);
-				link.tab('show');
 				scope.$apply(function(){
-					scope.activeTab = links.index(link);
+					var tabIndex = links.index(link);
+					scope.showTab(tabIndex);
 				});
 			});
+
+			scope.showTab = function(index){
+				console.log('showing tag', index);
+				$(links[index]).tab('show');
+				scope.activeTab = index;
+			};
 		}
 	};
 });
