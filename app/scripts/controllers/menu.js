@@ -65,7 +65,7 @@ angular.module('demoChronoApp')
     $scope.generateColors = function(){
     	var colorThief = new ColorThief();
     	var palette = colorThief.getPalette($scope.client.logoDom, 7);
-    	console.log(palette)
+    	var dominant = colorThief.getColor($scope.client.logoDom);
     	palette = palette.sort(function(a, b){
     		if (calcLuminance(a) < calcLuminance(b)) return -1;
     		if(calcLuminance(a) > calcLuminance(b)) return 1;
@@ -74,7 +74,7 @@ angular.module('demoChronoApp')
     		return rgbToHex(c[0], c[1], c[2]);
     	});
     	$scope.themeIsCustom = true;
-    	$scope.colors.bodyBg = palette[6];
+    	$scope.colors.bodyBg = rgbToHex(dominant[0], dominant[1], dominant[2]);
     	$scope.colors.bodyText = palette[2];
     	$scope.colors.tabsBg =  palette[5];
     	$scope.colors.tabsText = palette[0];
